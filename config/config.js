@@ -1,7 +1,7 @@
 var db_table = 'config';
 var db = require('../modules/db.js');
 var env = {};
-
+require = env().config;
 exports.debug = process.env.DEBUG || false;
 
 exports.env = function() {
@@ -23,9 +23,7 @@ function setConfig(){
     }
   });
 }
-exports.owner = {
-  id: '10241176'
-};
+
 exports.setConfig = setConfig;
 exports.bot_name = 'Fo0 Bot';
 exports.delay_time = 1000;
