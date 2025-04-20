@@ -1,6 +1,6 @@
 var dotenv = require('dotenv');
 require('dotenv').config();
-console.log(env);
+//console.log(env);
 var db_table = 'config';
 var db = require('../modules/db.js');
 var env = {};
