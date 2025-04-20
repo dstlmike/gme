@@ -23,7 +23,9 @@ function setConfig(){
     }
   });
 }
-
+exports.owner = {
+  id: '10241176'
+};
 exports.setConfig = setConfig;
 exports.bot_name = 'Fo0 Bot';
 exports.delay_time = 1000;
