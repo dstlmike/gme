@@ -25,7 +25,7 @@ function connect(callback){
 exports.getAllDocuments = function(collection, callback) {
   mongoDB.connect('mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampledb?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
     if(err) throw err;
-    var allDocs = db.collection(collection).find().toArray(function(err, docs) {
+    var allDocs = db.collection('sampleddb').find().toArray(function(err, docs) {
       callback(docs);
       db.close();
     });
@@ -34,7 +34,7 @@ exports.getAllDocuments = function(collection, callback) {
 
 exports.findDocs = function(collection, matchHash, callback) {
   connect(function(db){
-    var cursor = db.collection(collection).find(matchHash);
+    var cursor = db.collection('sampleddb').find(matchHash);
     var ret = [];
     cursor.each(function(err, doc){
       if(doc != null)
@@ -47,7 +47,7 @@ exports.findDocs = function(collection, matchHash, callback) {
 
 exports.addDoc = function(collection, doc, callback) {
   connect(function(db){
-    var ret = db.collection(collection).insert(doc, function(err, result){
+    var ret = db.collection('sampleddb').insert(doc, function(err, result){
       if (callback)
         callback(result);
       db.close();
