@@ -9,7 +9,7 @@
   "dependencies": {
     "director": "",
     "dotenv": "^16.5.0",
-    "mongodb": "^2.2.36"
+    "mongodb": "^2.0.14"
   },
   "engines": {
     "node": ">= 0.6.0",
