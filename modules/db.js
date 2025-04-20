@@ -1,10 +1,10 @@
 var mongoDB     = require('mongodb').MongoClient;
-var connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampleddb?retryWrites=true&w=majority&appName=Cluster0';
+var connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
 //var connection_string = 'mongodb://127.0.0.1:27017/nodejs';
 
 if(process.env.MONGODB_PASSWORD){
-   connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampleddb?retryWrites=true&w=majority&appName=Cluster0';
+   connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
   /*
   connection_string = 'mongodb://' + process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -16,16 +16,16 @@ if(process.env.MONGODB_PASSWORD){
 }
 
 function connect(callback){
-  mongoDB.connect('mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampleddb?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
+  mongoDB.connect('mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
     if(err) throw err;
     callback(db);
   });
 }
 
 exports.getAllDocuments = function(collection, callback) {
-  mongoDB.connect('mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampleddb?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
+  mongoDB.connect('mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
     if(err) throw err;
-    var allDocs = db.collection('sampleddb').find().toArray(function(err, docs) {
+    var allDocs = db.collection(collection).find().toArray(function(err, docs) {
       callback(docs);
       db.close();
     });
@@ -34,7 +34,7 @@ exports.getAllDocuments = function(collection, callback) {
 
 exports.findDocs = function(collection, matchHash, callback) {
   connect(function(db){
-    var cursor = db.collection('sampleddb').find(matchHash);
+    var cursor = db.collection(collection).find(matchHash);
     var ret = [];
     cursor.each(function(err, doc){
       if(doc != null)
@@ -47,7 +47,7 @@ exports.findDocs = function(collection, matchHash, callback) {
 
 exports.addDoc = function(collection, doc, callback) {
   connect(function(db){
-    var ret = db.collection('sampleddb').insert(doc, function(err, result){
+    var ret = db.collection(collection).insert(doc, function(err, result){
       if (callback)
         callback(result);
       db.close();
