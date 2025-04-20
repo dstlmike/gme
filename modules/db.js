@@ -4,7 +4,7 @@ var connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb
 //var connection_string = 'mongodb://127.0.0.1:27017/nodejs';
 
 if(process.env.MONGODB_PASSWORD){
-  var connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampleddb?retryWrites=true&w=majority&appName=Cluster0';
+   connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampleddb?retryWrites=true&w=majority&appName=Cluster0';
 
   /*
   connection_string = 'mongodb://' + process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
