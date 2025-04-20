@@ -16,7 +16,7 @@ router = new director.http.Router({
   '/commands' : {
     get: bot.commands
   },
-  '/bot/config' : {
+  '/bot/:botroom' : {
     get: ping,
     post: bot.respond
   },
