@@ -1,10 +1,10 @@
-var dotenv = require('dotenv');
-require('dotenv').config();
-//console.log(env);
+
 var db_table = 'config';
 var db = require('../modules/db.js');
 var env = {};
-
+var dotenv = require('dotenv');
+require('dotenv').config();
+//console.log(env);
 exports.debug = process.env.DEBUG || false;
 
 exports.env = function() {
