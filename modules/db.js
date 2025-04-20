@@ -1,10 +1,10 @@
 var mongoDB     = require('mongodb').MongoClient;
-var connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampledb?retryWrites=true&w=majority&appName=Cluster0';
+var connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampleddb?retryWrites=true&w=majority&appName=Cluster0';
 
 //var connection_string = 'mongodb://127.0.0.1:27017/nodejs';
 
 if(process.env.MONGODB_PASSWORD){
-  var connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampledb?retryWrites=true&w=majority&appName=Cluster0';
+  var connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampleddb?retryWrites=true&w=majority&appName=Cluster0';
 
   /*
   connection_string = 'mongodb://' + process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
@@ -16,14 +16,14 @@ if(process.env.MONGODB_PASSWORD){
 }
 
 function connect(callback){
-  mongoDB.connect('mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampledb?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
+  mongoDB.connect('mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampleddb?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
     if(err) throw err;
     callback(db);
   });
 }
 
 exports.getAllDocuments = function(collection, callback) {
-  mongoDB.connect('mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampledb?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
+  mongoDB.connect('mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/sampleddb?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
     if(err) throw err;
     var allDocs = db.collection('sampleddb').find().toArray(function(err, docs) {
       callback(docs);
