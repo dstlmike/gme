@@ -23,7 +23,7 @@ function connect(callback){
 }
 
 exports.getAllDocuments = function(collection, callback) {
-  mongoDB.connect('mongodb+srv://new:newnew@cluster0.esmha.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
+  mongoDB.connect('mongodb://new:newnew@cluster0.esmha.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
     if(err) throw err;
     var allDocs = db.collection(collection).find().toArray(function(err, docs) {
       callback(docs);
