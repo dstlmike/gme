@@ -1,7 +1,7 @@
 /*global init*/
 var dotenv = require('dotenv');
 require('dotenv').config();
-console.log(env);
+
 //load modules
 var sysCommands  = require('./modules/sys-commands.js');
 var db           = require('./modules/db.js');
