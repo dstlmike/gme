@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "director": "",
+    "dotenv": "^16.5.0",
     "mongodb": ""
   },
   "engines": {

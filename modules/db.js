@@ -1,24 +1,29 @@
 var mongoDB     = require('mongodb').MongoClient;
+var connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
-var connection_string = 'mongodb://127.0.0.1:27017/nodejs';
+//var connection_string = 'mongodb://127.0.0.1:27017/nodejs';
 
-if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+if(process.env.MONGODB_PASSWORD){
+  var connection_string = 'mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+
+  /*
   connection_string = 'mongodb://' + process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
   process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
   process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
   process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
   process.env.OPENSHIFT_APP_NAME;
+  */
 }
 
 function connect(callback){
-  mongoDB.connect(connection_string, function(err, db) {
+  mongoDB.connect('mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
     if(err) throw err;
     callback(db);
   });
 }
 
 exports.getAllDocuments = function(collection, callback) {
-  mongoDB.connect(connection_string, function(err, db) {
+  mongoDB.connect('mongodb+srv://alexbot:308boonave@cluster0.esmha.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', function(err, db) {
     if(err) throw err;
     var allDocs = db.collection(collection).find().toArray(function(err, docs) {
       callback(docs);
